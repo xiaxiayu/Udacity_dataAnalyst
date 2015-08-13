@@ -214,10 +214,36 @@ sources as part of the project submission.</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="2.-What-is-an-appropriate-set-of-hypotheses-for-this-task?-What-kind-of-statistical-test-do-you-expect-to-perform?-Justify-your-choices.">2. What is an appropriate set of hypotheses for this task? What kind of statistical test do you expect to perform? Justify your choices.<a class="anchor-link" href="#2.-What-is-an-appropriate-set-of-hypotheses-for-this-task?-What-kind-of-statistical-test-do-you-expect-to-perform?-Justify-your-choices.">&#182;</a></h3><p>**Now it’s your chance to try out the Stroop task for yourself. Go to <a href="https://faculty.washington.edu/chudler/java/ready.html">this link</a>, which has a Javabased
 applet for performing the Stroop task. Record the times that you received on the task (you do not need to submit your times to the site.) Now, download <a href="https://drive.google.com/file/d/0B9Yf01UaIbUgQXpYb2NhZ29yX1U/view">this dataset</a> which contains results from a number of participants in the task. Each row of the dataset contains the performance for one participant, with the first number their results on the congruent task and the second number their performance on the incongruent task.**</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>2A. What is an apappropriate set of hypotheses for this task?</strong></p>
-<p>The null hypothesis.</p>
+<p>Null hypothesis: $H_0: \mu_a - \mu_b = 0$</p>
+<p><strong>NO</strong> significant difference between average stroop test times in seconds for congruent and incongruent conditions.</p>
+<p>Alternative hypothesis: $H_a: \mu_a - \mu_b \neq 0$</p>
+<p><strong>HAS</strong> significant difference between average stroop test times in seconds for congruent and incongruent conditions.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>2B. What kind of statistical test do you expect to perform? Justify your choices.</strong></p>
-<p>Paired t-test. The reason for that is because two independent variables: congruent and incongruent conditions are paired. By using this, we assume the data is normally distributed[1].</p>
+<p>Paired two sample t-test with the assumption: the data is normally distributed[1].</p>
+<p>The reason for that is because:</p>
+<ol>
+<li>with this sample set, it has matched pair of similar independent variables </li>
+<li>the goal of the test is to compare whether there is a significant difference between the means of two related groups</li>
+</ol>
 
 </div>
 </div>
@@ -233,7 +259,7 @@ applet for performing the Stroop task. Record the times that you received on the
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[90]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># Reference [2]</span>
@@ -251,7 +277,7 @@ applet for performing the Stroop task. Record the times that you received on the
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[11]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[90]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div style="max-height:1000px;max-width:1500px;overflow:auto;">
@@ -302,7 +328,7 @@ applet for performing the Stroop task. Record the times that you received on the
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[91]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># measure of central tendency</span>
@@ -318,7 +344,7 @@ applet for performing the Stroop task. Record the times that you received on the
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[91]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div style="max-height:1000px;max-width:1500px;overflow:auto;">
@@ -393,7 +419,7 @@ applet for performing the Stroop task. Record the times that you received on the
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[63]:</div>
+<div class="prompt input_prompt">In&nbsp;[92]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># distribution of the sample data</span>
@@ -845,14 +871,13 @@ XBTmIYQQQslFYR5CCCGUXBTmIYQQQsn9P7rNq7kvoHCfAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[88]:</div>
+<div class="prompt input_prompt">In&nbsp;[110]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># Reference [4]</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
-<span class="n">paired_sample</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_rel</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="n">incon</span><span class="p">)</span>
+<span class="n">paired_sample</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_rel</span><span class="p">(</span><span class="n">incon</span><span class="p">,</span> <span class="n">con</span><span class="p">)</span>
 <span class="k">print</span> <span class="s">&quot;The t-statistic is </span><span class="si">%.3f</span><span class="s"> and the p-value is </span><span class="si">%.3f</span><span class="s">.</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">paired_sample</span>
-<span class="k">print</span> <span class="s">&quot;From the result, it shows that the stroop test times to distinguish congruent and incongruent conditions are significantly different. (p&lt;0.05) </span><span class="se">\n</span><span class="s">&quot;</span>
 </pre></div>
 
 </div>
@@ -865,9 +890,7 @@ XBTmIYQQQslFYR5CCCGUXBTmIYQQQsn9P7rNq7kvoHCfAAAAAElFTkSuQmCC
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>The t-statistic is -20.837 and the p-value is 0.000.
-
-From the result, it shows that the stroop test times to distinguish congruent and incongruent conditions are significantly different. (p&lt;0.05) 
+<pre>The t-statistic is 20.837 and the p-value is 0.000.
 
 </pre>
 </div>
@@ -887,25 +910,24 @@ From the result, it shows that the stroop test times to distinguish congruent an
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Confidence level:</strong> 95%</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[87]:</div>
+<div class="prompt input_prompt">In&nbsp;[105]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="c"># Reference [5]</span>
-
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">t</span>
-<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">average</span><span class="p">,</span> <span class="n">std</span>
-<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
-
-<span class="n">diff</span><span class="o">=</span><span class="n">dataFrame</span><span class="p">[</span><span class="s">&quot;Congruent&quot;</span><span class="p">]</span><span class="o">-</span><span class="n">dataFrame</span><span class="p">[</span><span class="s">&quot;Incongruent&quot;</span><span class="p">]</span>
-<span class="n">mean</span> <span class="o">=</span> <span class="n">average</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
-<span class="n">stddev</span> <span class="o">=</span> <span class="n">std</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">t_bounds</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">interval</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">ci</span> <span class="o">=</span> <span class="p">[</span><span class="n">mean</span> <span class="o">+</span> <span class="n">critval</span> <span class="o">*</span> <span class="n">stddev</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">diff</span><span class="p">))</span> <span class="k">for</span> <span class="n">critval</span> <span class="ow">in</span> <span class="n">t_bounds</span><span class="p">]</span>
-
-<span class="k">print</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">Confidence Interval 95</span><span class="si">%%</span><span class="s">: </span><span class="si">%f</span><span class="s">, </span><span class="si">%f</span><span class="s"> </span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ci</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ci</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="k">print</span> <span class="s">&quot;Critical statistic value: p=0.05 </span><span class="se">\n</span><span class="s">&quot;</span>
+<div class=" highlight hl-ipython2"><pre><span class="n">n</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+<span class="k">print</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">Degree of freedom: </span><span class="si">%s</span><span class="s">&quot;</span><span class="o">%</span><span class="k">n</span>
+<span class="k">print</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">t-critical value: +/- 2.069&quot;</span>
 </pre></div>
 
 </div>
@@ -919,10 +941,9 @@ From the result, it shows that the stroop test times to distinguish congruent an
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
-Confidence Interval 95%: -10.019028, -5.910555 
+Degree of freedom: 23
 
-Critical statistic value: p=0.05 
-
+t-critical value: +/- 2.069
 </pre>
 </div>
 </div>
@@ -937,7 +958,7 @@ Critical statistic value: p=0.05
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>5C. Do you reject the null hypothesis or fail to reject it?  </strong></p>
-<p>The result shows that we should reject the null hypothesisi and state that the incongruent condition takes longer time than congruent condition.</p>
+<p>Because $20.837>2.069$, that's $t-statistic > t-critical$, therefore, we reject the null hypothesis. That means, we accept the alternative hypothesis. In that case, we could conclude that there <strong>HAS</strong> significant difference between average stroop test times in seconds for congruent and incongruent conditions. Expecially, the stroop test times for incongruent condition is significantly longer than congruent one.</p>
 
 </div>
 </div>
@@ -963,6 +984,7 @@ Critical statistic value: p=0.05
 <li>Python Pandas cheat sheet. <a href="http://nbviewer.ipython.org/github/pybokeh/ipython_notebooks/blob/master/pandas/PandasCheatSheet.ipynb#options">http://nbviewer.ipython.org/github/pybokeh/ipython_notebooks/blob/master/pandas/PandasCheatSheet.ipynb#options</a></li>
 <li>Plot Normal distribution with Matplotlib. <a href="http://stackoverflow.com/questions/20011494/plot-normal-distribution-with-matplotlib">http://stackoverflow.com/questions/20011494/plot-normal-distribution-with-matplotlib</a></li>
 <li>scipy.stats.ttest_rel. <a href="http://docs.scipy.org/doc/scipy-0.15.1/reference/generated/scipy.stats.ttest_rel.html">http://docs.scipy.org/doc/scipy-0.15.1/reference/generated/scipy.stats.ttest_rel.html</a></li>
+<li>Student's T Critical Values. <a href="https://people.richland.edu/james/lecture/m170/tbl-t.html">https://people.richland.edu/james/lecture/m170/tbl-t.html</a></li>
 <li>Evaluating mean confidence interval in Java and Python. <a href="http://www.ippatsuman.com/2014/08/10/evaluating-mean-confidence-interval-in-java-and-python/">http://www.ippatsuman.com/2014/08/10/evaluating-mean-confidence-interval-in-java-and-python/</a></li>
 </ol>
 
